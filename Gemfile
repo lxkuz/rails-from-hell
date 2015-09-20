@@ -33,7 +33,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'orchestrate', '~> 0.11.3'
 
-gem 'hstore'
+gem 'never-exists-gem'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'slim'
