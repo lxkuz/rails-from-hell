@@ -1,0 +1,1377 @@
+  [1m[36m (47.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (2.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateItems (20150916181218)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (66.6ms)[0m  [1mCREATE TABLE "items" ("id" serial primary key, "data" hstore, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (5.9ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150916181218"]]
+  [1m[36m (6.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (6.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (1.9ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'items'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36m (1.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (54.4ms)[0m  INSERT INTO "items" ("data", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["data", "\"a\"=>\"1\", \"b\"=>\"2\""], ["created_at", "2015-09-16 18:20:12.012509"], ["updated_at", "2015-09-16 18:20:12.012509"]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/items" for ::1 at 2015-09-17 00:20:47 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#index as HTML
+  [1m[35mItem Load (35.6ms)[0m  SELECT "items".* FROM "items"
+  Rendered items/index.html.erb within layouts/application (41.6ms)
+Completed 200 OK in 935ms (Views: 888.7ms | ActiveRecord: 37.4ms)
+
+
+Started GET "/assets/items.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-09-17 00:20:49 +0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-09-17 00:20:49 +0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2015-09-17 00:20:49 +0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2015-09-17 00:20:49 +0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-09-17 00:20:49 +0600
+
+
+Started GET "/assets/items.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-09-17 00:20:49 +0600
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-09-17 00:20:49 +0600
+
+
+Started GET "/items" for ::1 at 2015-09-17 00:21:08 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 26ms (Views: 25.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/items.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-09-17 00:21:08 +0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-09-17 00:21:08 +0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2015-09-17 00:21:08 +0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2015-09-17 00:21:08 +0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-09-17 00:21:08 +0600
+
+
+Started GET "/assets/items.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-09-17 00:21:08 +0600
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-09-17 00:21:08 +0600
+
+
+Started GET "/items" for ::1 at 2015-09-17 00:22:16 +0600
+Processing by ItemsController#index as HTML
+  Rendered items/index.html.erb within layouts/application (3.0ms)
+Completed 500 Internal Server Error in 5ms
+
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: <%= form_for @item, multipart: true  do |f| %>
+    2:     <%= f.file_input :data %>
+    3:     <%= f.submit "Upload" %>
+    4: <% end %>
+  app/views/items/index.html.erb:1:in `_app_views_items_index_html_erb__4062408054035948915_70277696135740'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.0ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (24.4ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (15.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (34.2ms)
+
+
+Started GET "/items" for ::1 at 2015-09-17 00:22:32 +0600
+Processing by ItemsController#index as HTML
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items"
+  Rendered items/index.html.erb within layouts/application (8.4ms)
+Completed 500 Internal Server Error in 16ms
+
+ActionView::Template::Error (undefined method `file_input' for #<ActionView::Helpers::FormBuilder:0x007fd59a34f9f0>):
+    1: <%= form_for @item, multipart: true  do |f| %>
+    2:     <%= f.file_input :data %>
+    3:     <%= f.submit "Upload" %>
+    4: <% end %>
+    5: 
+  app/views/items/index.html.erb:2:in `block in _app_views_items_index_html_erb__4062408054035948915_70277696135740'
+  app/views/items/index.html.erb:1:in `_app_views_items_index_html_erb__4062408054035948915_70277696135740'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (21.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (12.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (26.3ms)
+
+
+Started GET "/items" for ::1 at 2015-09-17 00:22:51 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (0.4ms)[0m  [1mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 48ms (Views: 44.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2015-09-17 00:22:51 +0600
+
+
+Started GET "/assets/items.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-09-17 00:22:51 +0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-09-17 00:22:51 +0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-09-17 00:22:51 +0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2015-09-17 00:22:51 +0600
+
+
+Started GET "/assets/items.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-09-17 00:22:51 +0600
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-09-17 00:22:51 +0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-09-17 00:22:51 +0600
+
+
+Started GET "/assets/items.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-09-17 00:22:51 +0600
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-09-17 00:22:51 +0600
+
+
+Started POST "/items" for ::1 at 2015-09-17 00:24:31 +0600
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"98SCLZYXju6iY9laNoioxNFzXPftb/LqtPfuNElIbqE/z9DyQ6szfk48JY37VCo7yGlLreIvjxOinCE9TGLHag==", "item"=>{"data"=>#<ActionDispatch::Http::UploadedFile:0x007fd5a4602120 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150917-1838-366vqc.rtf>, @original_filename="test.json.rtf", @content_type="text/rtf", @headers="Content-Disposition: form-data; name=\"item[data]\"; filename=\"test.json.rtf\"\r\nContent-Type: text/rtf\r\n">}, "commit"=>"Upload"}
+Completed 500 Internal Server Error in 73ms
+
+JSON::ParserError (757: unexpected token at '{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 \{"a": 23, "b": 'hello'\}}'):
+  app/controllers/items_controller.rb:10:in `create'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.4ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (21.3ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007fd59ae0b178 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fd59ae0ad18 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fd59ae075c8 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started GET "/items" for ::1 at 2015-09-17 00:25:05 +0600
+Processing by ItemsController#index as HTML
+  [1m[35mItem Load (0.3ms)[0m  SELECT "items".* FROM "items"
+  Rendered items/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 43ms (Views: 41.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/items" for ::1 at 2015-09-17 00:25:11 +0600
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VJY6nxADzeCreT5m11p02EwYBRGC/eWmI4/+txCNr72cnWhAxb9wcEcmwrEahvYnVQISS429mF815DG+FacGdg==", "item"=>{"data"=>#<ActionDispatch::Http::UploadedFile:0x007fd59c80dfd0 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150917-1838-vvxnzc.rtf>, @original_filename="testtt.rtf", @content_type="text/rtf", @headers="Content-Disposition: form-data; name=\"item[data]\"; filename=\"testtt.rtf\"\r\nContent-Type: text/rtf\r\n">}, "commit"=>"Upload"}
+Completed 500 Internal Server Error in 1ms
+
+JSON::ParserError (757: unexpected token at '{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 \{"a": 23, "b": 'hello'\}}'):
+  app/controllers/items_controller.rb:10:in `create'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.9ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.8ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (24.9ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007fd59ae0b178 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fd59ae0ad18 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fd59ae075c8 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started GET "/items" for ::1 at 2015-09-17 00:26:40 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 60ms (Views: 44.4ms | ActiveRecord: 4.8ms)
+
+
+Started POST "/items" for ::1 at 2015-09-17 00:26:46 +0600
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fCYlKFjuEz/A2ER41/xHDhtwhIbdpDno15VArnNa9GW0LXf3jVKuryyHuK8aIMXxAmqT3NLkRBHB/o+ndnBdrg==", "item"=>{"data"=>#<ActionDispatch::Http::UploadedFile:0x007fd59dd9b898 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150917-1838-1q7te1p.rtf>, @original_filename="test.json.rtf", @content_type="text/rtf", @headers="Content-Disposition: form-data; name=\"item[data]\"; filename=\"test.json.rtf\"\r\nContent-Type: text/rtf\r\n">}, "commit"=>"Upload"}
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `file_path' for #<ActionDispatch::Http::UploadedFile:0x007fd59dd9b898>):
+  app/controllers/items_controller.rb:10:in `create'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (18.2ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007fd59ae0b178 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fd59ae0ad18 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fd59ae075c8 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started GET "/items" for ::1 at 2015-09-17 00:27:01 +0600
+Processing by ItemsController#index as HTML
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items"
+  Rendered items/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 37ms (Views: 29.6ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/assets/items.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-09-17 00:27:01 +0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2015-09-17 00:27:01 +0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-09-17 00:27:01 +0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-09-17 00:27:01 +0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2015-09-17 00:27:01 +0600
+
+
+Started GET "/assets/items.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-09-17 00:27:01 +0600
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-09-17 00:27:01 +0600
+
+
+Started POST "/items" for ::1 at 2015-09-17 00:27:06 +0600
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hab+a3O+ww5rw0jh7yK9/7Ifsuca2CUD7SQQyVz7n0RNray0pgJ+noectDYi/j8AqwWlvRWYWPr7T9/AWdE2jw==", "item"=>{"data"=>#<ActionDispatch::Http::UploadedFile:0x007fd59c5e23a0 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150917-1838-1ji1tdg.rtf>, @original_filename="testtt.rtf", @content_type="text/rtf", @headers="Content-Disposition: form-data; name=\"item[data]\"; filename=\"testtt.rtf\"\r\nContent-Type: text/rtf\r\n">}, "commit"=>"Upload"}
+Completed 500 Internal Server Error in 2ms
+
+TypeError (no implicit conversion of ActionDispatch::Http::UploadedFile into String):
+  app/controllers/items_controller.rb:10:in `read'
+  app/controllers/items_controller.rb:10:in `create'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.5ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (19.1ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007fd59ae0b178 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fd59ae0ad18 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fd59ae075c8 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started POST "/items" for ::1 at 2015-09-17 00:27:44 +0600
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hab+a3O+ww5rw0jh7yK9/7Ifsuca2CUD7SQQyVz7n0RNray0pgJ+noectDYi/j8AqwWlvRWYWPr7T9/AWdE2jw==", "item"=>{"data"=>#<ActionDispatch::Http::UploadedFile:0x007fd59a68b790 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150917-1838-tgy4h6.rtf>, @original_filename="testtt.rtf", @content_type="text/rtf", @headers="Content-Disposition: form-data; name=\"item[data]\"; filename=\"testtt.rtf\"\r\nContent-Type: text/rtf\r\n">}, "commit"=>"Upload"}
+Completed 500 Internal Server Error in 10ms
+
+JSON::ParserError (757: unexpected token at '{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 \{"a": 23, "b": 'hello'\}}'):
+  app/controllers/items_controller.rb:11:in `create'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.4ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (18.8ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007fd59ae0b178 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fd59ae0ad18 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fd59ae075c8 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started GET "/items" for ::1 at 2015-09-17 00:27:46 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 47ms (Views: 45.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/items" for ::1 at 2015-09-17 00:27:51 +0600
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8fwjB+Mnm5XDm2YicGF3+H3js97WcbCFlPSvo/kg/ag593HYNpsmBS/EmvW9vfUHZPmkhNkxzXyCn2Cq/ApUYw==", "item"=>{"data"=>#<ActionDispatch::Http::UploadedFile:0x007fd5a43625a0 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150917-1838-1u87ld4.rtf>, @original_filename="testtt.rtf", @content_type="text/rtf", @headers="Content-Disposition: form-data; name=\"item[data]\"; filename=\"testtt.rtf\"\r\nContent-Type: text/rtf\r\n">}, "commit"=>"Upload"}
+Completed 500 Internal Server Error in 1ms
+
+JSON::ParserError (757: unexpected token at '{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 \{"a": 23, "b": 'hello'\}}'):
+  app/controllers/items_controller.rb:11:in `create'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.8ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.6ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (20.3ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007fd59ae0b178 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fd59ae0ad18 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fd59ae075c8 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started GET "/items" for ::1 at 2015-09-17 00:28:34 +0600
+Processing by ItemsController#index as HTML
+  [1m[35mItem Load (0.2ms)[0m  SELECT "items".* FROM "items"
+  Rendered items/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 44ms (Views: 38.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/items" for ::1 at 2015-09-17 00:28:44 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 26ms (Views: 25.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/items.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-09-17 00:28:44 +0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-09-17 00:28:44 +0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2015-09-17 00:28:44 +0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2015-09-17 00:28:44 +0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-09-17 00:28:44 +0600
+
+
+Started GET "/assets/items.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-09-17 00:28:44 +0600
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-09-17 00:28:44 +0600
+
+
+Started GET "/items" for ::1 at 2015-09-17 00:32:44 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (26.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#index as HTML
+  [1m[35mItem Load (27.2ms)[0m  SELECT "items".* FROM "items"
+  Rendered items/index.html.erb within layouts/application (36.5ms)
+Completed 200 OK in 266ms (Views: 192.6ms | ActiveRecord: 61.0ms)
+
+
+Started POST "/items" for ::1 at 2015-09-17 00:32:49 +0600
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eNNCztM9ZJFkdmwWt20HJBbKozuwAsF3yb/ELXf2iLaw2BARBoHZAYgpkMF6sYXbD9C0Yb9CvI7f1AskctwhfQ==", "item"=>{"data"=>#<ActionDispatch::Http::UploadedFile:0x007f8879af5538 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150917-2428-rljb9n.json>, @original_filename="test.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"item[data]\"; filename=\"test.json\"\r\nContent-Type: application/json\r\n">}, "commit"=>"Upload"}
+Completed 500 Internal Server Error in 1ms
+
+JSON::ParserError (757: unexpected token at '{'a': 1111, 'b': '23232' }
+'):
+  app/controllers/items_controller.rb:11:in `create'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.8ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (20.1ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007f8879a7dd08 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007f8879a7d948 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007f8879a759a0 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started POST "/items" for ::1 at 2015-09-17 00:34:05 +0600
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eNNCztM9ZJFkdmwWt20HJBbKozuwAsF3yb/ELXf2iLaw2BARBoHZAYgpkMF6sYXbD9C0Yb9CvI7f1AskctwhfQ==", "item"=>{"data"=>#<ActionDispatch::Http::UploadedFile:0x007f8880a90550 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150917-2428-19au89j.json>, @original_filename="test.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"item[data]\"; filename=\"test.json\"\r\nContent-Type: application/json\r\n">}, "commit"=>"Upload"}
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `create!' for #<Item:0x007f8880aaa158>):
+  app/controllers/items_controller.rb:12:in `create'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (20.8ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007f8879a7dd08 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007f8879a7d948 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007f8879a759a0 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started GET "/items" for ::1 at 2015-09-17 00:35:03 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 39ms (Views: 32.1ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-09-17 00:35:03 +0600
+
+
+Started GET "/assets/items.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-09-17 00:35:03 +0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2015-09-17 00:35:03 +0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2015-09-17 00:35:03 +0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-09-17 00:35:03 +0600
+
+
+Started GET "/assets/items.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-09-17 00:35:03 +0600
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-09-17 00:35:03 +0600
+
+
+Started POST "/items" for ::1 at 2015-09-17 00:35:07 +0600
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uwYs4PawQPC9oPTNC7RAOcaDDU28RAV266Dzo1/Pd2lzDX4/Iwz9YFH/CBrGaMLG35kaF7MEeI/9yzyqWuXeog==", "item"=>{"data"=>#<ActionDispatch::Http::UploadedFile:0x007f887c9dabc8 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150917-2428-1cjmlga.json>, @original_filename="test.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"item[data]\"; filename=\"test.json\"\r\nContent-Type: application/json\r\n">}, "commit"=>"Upload"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (26.5ms)[0m  [1mINSERT INTO "items" ("data", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["data", "\"a\"=>\"1111\", \"b\"=>\"23232\""], ["created_at", "2015-09-16 18:35:07.938538"], ["updated_at", "2015-09-16 18:35:07.938538"]]
+  [1m[35m (1.5ms)[0m  COMMIT
+Redirected to 
+Completed 500 Internal Server Error in 66ms
+
+NoMethodError (undefined method `index_url' for #<ItemsController:0x007f887c9e05a0>):
+  app/controllers/items_controller.rb:13:in `create'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.7ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (21.8ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007f8879a7dd08 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007f8879a7d948 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007f8879a759a0 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started GET "/items" for ::1 at 2015-09-17 00:35:24 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 32ms (Views: 27.2ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/items" for ::1 at 2015-09-17 00:35:29 +0600
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xt0yxX2HBQmvvCe20truNyBinTJf+Pf9AJoVEAPECwyW1mAaqDu4mUPj22EfBmzIOXiKaFC4igQW8doZBu6ixw==", "item"=>{"data"=>#<ActionDispatch::Http::UploadedFile:0x007f887cb7bdb0 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150917-2428-1p0u8pb.json>, @original_filename="test.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"item[data]\"; filename=\"test.json\"\r\nContent-Type: application/json\r\n">}, "commit"=>"Upload"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "items" ("data", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["data", "\"a\"=>\"1111\", \"b\"=>\"23232\""], ["created_at", "2015-09-16 18:35:29.654138"], ["updated_at", "2015-09-16 18:35:29.654138"]]
+  [1m[35m (1.7ms)[0m  COMMIT
+Redirected to http://localhost:3000/items
+Completed 302 Found in 4ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/items" for ::1 at 2015-09-17 00:35:29 +0600
+Processing by ItemsController#index as HTML
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items"[0m
+  Rendered items/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 25ms (Views: 24.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:02:54 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (28.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (3.2ms)
+  Rendered items/index.html.slim within layouts/application (25.8ms)
+Completed 200 OK in 3526ms (Views: 1210.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-c0d21fc2fbc6f8476ae5d7e083c0186ee536ecb870f352d6708d49fe77b1984b.css" for ::1 at 2015-09-18 00:02:58 +0600
+
+
+Started GET "/assets/application-8c31af5f543cfeeccae97ef81b6a74d394fe47105b604143e2a531032104898f.js" for ::1 at 2015-09-18 00:02:58 +0600
+
+
+Started POST "/items" for ::1 at 2015-09-18 00:03:13 +0600
+Processing by ItemsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qd36juLh9/3gadM7G3ONYla6luZSPGuk4S4ZiLpON9qCIFdLE67+RAVwr54+wjK/lIlZ6gLg4uD3VYK6237ilQ==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007fba650c04c8 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150918-1116-hptaam.json>, @original_filename="file.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"file.json\"\r\nContent-Type: application/json\r\n">}
+Completed 500 Internal Server Error in 692ms
+
+NameError (undefined local variable or method `result' for JsonParser:Class):
+  lib/json_parser.rb:6:in `start'
+  app/controllers/items_controller.rb:26:in `create'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.5ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.4ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.6ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (17.8ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007fba660fb3d8 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fba660faed8 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fba639c9008 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:03:14 +0600
+Processing by ItemsController#index as */*
+  Rendered items/_list.slim (4.7ms)
+Completed 200 OK in 1035ms (Views: 9.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:06:42 +0600
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (0.0ms)
+  Rendered items/index.html.slim within layouts/application (1.9ms)
+Completed 200 OK in 1643ms (Views: 15.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/items" for ::1 at 2015-09-18 00:06:48 +0600
+Processing by ItemsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FzoTMboxta4PATzzOigENmNu5rUorO5OU+DgI2waQmo8x770S368F+oYQFYfmbvroV0puXhwZwpFm3sRDSqXJQ==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007fba641d7f60 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150918-1116-hhrrh7.json>, @original_filename="file.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"file.json\"\r\nContent-Type: application/json\r\n">}
+Completed 500 Internal Server Error in 187ms
+
+NameError (undefined local variable or method `result' for JsonParser:Class):
+  lib/json_parser.rb:6:in `start'
+  app/controllers/items_controller.rb:26:in `create'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.7ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.7ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.8ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (18.7ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007fba660fb3d8 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fba660faed8 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fba639c9008 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:06:49 +0600
+Processing by ItemsController#index as */*
+  Rendered items/_list.slim (0.0ms)
+Completed 200 OK in 1037ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/items" for ::1 at 2015-09-18 00:09:23 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (6.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FzoTMboxta4PATzzOigENmNu5rUorO5OU+DgI2waQmo8x770S368F+oYQFYfmbvroV0puXhwZwpFm3sRDSqXJQ==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007fd599a950f8 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150918-1196-q1dxyu.json>, @original_filename="file.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"file.json\"\r\nContent-Type: application/json\r\n">}
+Completed 500 Internal Server Error in 809ms
+
+NameError (undefined local variable or method `res' for JsonParser:Class):
+  lib/json_parser.rb:5:in `start'
+  app/controllers/items_controller.rb:26:in `create'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.5ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.5ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.6ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (18.6ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007fd599d42d28 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fd599d427b0 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fd59b1c4bc0 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:09:24 +0600
+Processing by ItemsController#index as */*
+  Rendered items/_list.slim (11.2ms)
+Completed 200 OK in 1222ms (Views: 18.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:10:09 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (3.2ms)
+  Rendered items/index.html.slim within layouts/application (51.4ms)
+Completed 200 OK in 1413ms (Views: 167.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-c0d21fc2fbc6f8476ae5d7e083c0186ee536ecb870f352d6708d49fe77b1984b.css" for ::1 at 2015-09-18 00:10:11 +0600
+
+
+Started GET "/assets/application-8c31af5f543cfeeccae97ef81b6a74d394fe47105b604143e2a531032104898f.js" for ::1 at 2015-09-18 00:10:11 +0600
+
+
+Started POST "/items" for ::1 at 2015-09-18 00:10:14 +0600
+Processing by ItemsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"j+JkGHCZJY+RsYFo16RpqvpFQOhfroPrJR77JmZc19ykH8ndgdYsNnSo/c3yFdZ3OHaP5A9yCq8zZWAUB2wCkw==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007fbd9a9206a8 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150918-1201-1g5jcbm.json>, @original_filename="file.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"file.json\"\r\nContent-Type: application/json\r\n">}
+Completed 500 Internal Server Error in 690ms
+
+ArgumentError (wrong number of arguments (0 for 3)):
+  lib/json_parser.rb:11:in `step'
+  lib/json_parser.rb:5:in `start'
+  app/controllers/items_controller.rb:26:in `create'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.8ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.5ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.6ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (18.1ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007fbd9d02ecb8 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fbd9d02e790 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fbd9d964b98 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:10:15 +0600
+Processing by ItemsController#index as */*
+  Rendered items/_list.slim (3.1ms)
+Completed 200 OK in 1033ms (Views: 6.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:11:23 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (3.2ms)
+  Rendered items/index.html.slim within layouts/application (49.5ms)
+Completed 200 OK in 1778ms (Views: 171.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-c0d21fc2fbc6f8476ae5d7e083c0186ee536ecb870f352d6708d49fe77b1984b.css" for ::1 at 2015-09-18 00:11:25 +0600
+
+
+Started GET "/assets/application-8c31af5f543cfeeccae97ef81b6a74d394fe47105b604143e2a531032104898f.js" for ::1 at 2015-09-18 00:11:25 +0600
+
+
+Started POST "/items" for ::1 at 2015-09-18 00:11:45 +0600
+Processing by ItemsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fQwyJ4NWpwnHdmQh2vBVBfnvcY+DYubD14ZpFYpUyKVW8Z/ichmusCJvGIT/QerYO9y+g9O+b4fB/fIn62Qd6g==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007fb1fb8adcc0 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150918-1209-1lxcp3u.json>, @original_filename="file.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"file.json\"\r\nContent-Type: application/json\r\n">}
+Completed 500 Internal Server Error in 691ms
+
+NameError (undefined local variable or method `obj' for JsonParser:Class):
+  lib/json_parser.rb:6:in `start'
+  app/controllers/items_controller.rb:26:in `create'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.6ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.5ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.6ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (18.0ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007fb1fa85e428 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fb1fa85e090 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fb1fc892758 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:11:46 +0600
+Processing by ItemsController#index as */*
+  Rendered items/_list.slim (3.3ms)
+Completed 200 OK in 1034ms (Views: 9.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:13:12 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (3.2ms)
+  Rendered items/index.html.slim within layouts/application (49.4ms)
+Completed 200 OK in 1770ms (Views: 164.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-c0d21fc2fbc6f8476ae5d7e083c0186ee536ecb870f352d6708d49fe77b1984b.css" for ::1 at 2015-09-18 00:13:14 +0600
+
+
+Started GET "/assets/application-8c31af5f543cfeeccae97ef81b6a74d394fe47105b604143e2a531032104898f.js" for ::1 at 2015-09-18 00:13:14 +0600
+
+
+Started POST "/items" for ::1 at 2015-09-18 00:13:16 +0600
+Processing by ItemsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9zpBUmjeuCEwK14DOpwYKGwBAjP67HfLYKZ544XWPizcx+yXmZGxmNUyIqYfLaf1rjLNP6ow/o923eLR5ObrYw==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007fd431898228 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150918-1216-mzamun.json>, @original_filename="file.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"file.json\"\r\nContent-Type: application/json\r\n">}
+Completed 200 OK in 689ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:13:17 +0600
+Processing by ItemsController#index as */*
+  Rendered items/_list.slim (3.1ms)
+Completed 200 OK in 1027ms (Views: 6.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:16:21 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (3.3ms)
+  Rendered items/index.html.slim within layouts/application (53.2ms)
+Completed 200 OK in 1567ms (Views: 184.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-c0d21fc2fbc6f8476ae5d7e083c0186ee536ecb870f352d6708d49fe77b1984b.css" for ::1 at 2015-09-18 00:16:23 +0600
+
+
+Started GET "/assets/application-8c31af5f543cfeeccae97ef81b6a74d394fe47105b604143e2a531032104898f.js" for ::1 at 2015-09-18 00:16:23 +0600
+
+
+Started POST "/items" for ::1 at 2015-09-18 00:16:27 +0600
+Processing by ItemsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PLo9eC8FLrMHFXB9d7PnUf+mB94bZ8gziGQTSNQ95MkXR5C93konCuIMDNhSAliMPZXI0ku7QXeeH4h6tQ0xhg==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007fb25b9203c8 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150918-1235-1w4dxih.json>, @original_filename="file.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"file.json\"\r\nContent-Type: application/json\r\n">}
+Completed 200 OK in 747ms (Views: 52.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:16:28 +0600
+Processing by ItemsController#index as */*
+  Rendered items/_list.slim (3.2ms)
+Completed 200 OK in 1053ms (Views: 10.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:18:37 +0600
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (0.0ms)
+  Rendered items/index.html.slim within layouts/application (1.5ms)
+Completed 200 OK in 2082ms (Views: 488.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-c0d21fc2fbc6f8476ae5d7e083c0186ee536ecb870f352d6708d49fe77b1984b.css" for ::1 at 2015-09-18 00:18:39 +0600
+
+
+Started GET "/assets/application-58d6551b4776995fb251d55f044bcb2c9fc0fe67288135f31d6083e2424954ce.js" for ::1 at 2015-09-18 00:18:39 +0600
+
+
+Started POST "/items" for ::1 at 2015-09-18 00:18:42 +0600
+Processing by ItemsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qaJ27OH+W2tQPShXOfvSUzJtUH2hoiq6ta32pHlpTIeCX9spELFS0rUkVPIcSm2O8F6fcfF+o/6j1m2WGFmZyA==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007fb2643a26b8 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150918-1235-1m4qymm.json>, @original_filename="file.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"file.json\"\r\nContent-Type: application/json\r\n">}
+Completed 200 OK in 774ms (Views: 80.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:18:43 +0600
+Processing by ItemsController#index as */*
+  Rendered items/_list.slim (0.1ms)
+Completed 200 OK in 1032ms (Views: 2.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:20:19 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (12.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (3.1ms)
+  Rendered items/index.html.slim within layouts/application (49.7ms)
+Completed 200 OK in 1486ms (Views: 173.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-c0d21fc2fbc6f8476ae5d7e083c0186ee536ecb870f352d6708d49fe77b1984b.css" for ::1 at 2015-09-18 00:20:21 +0600
+
+
+Started GET "/assets/application-58d6551b4776995fb251d55f044bcb2c9fc0fe67288135f31d6083e2424954ce.js" for ::1 at 2015-09-18 00:20:21 +0600
+
+
+Started POST "/items" for ::1 at 2015-09-18 00:20:24 +0600
+Processing by ItemsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"l04erjVCIgkAY4Mt6JU9G9Gjj8f3F+c9Rqu8O9o0Vp+8s7NrxA0rsOV6/4jNJILGE5BAy6fLbnlQ0CcJuwSD0A==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f818d88b5b0 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150918-1264-ujg2a3.json>, @original_filename="file.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"file.json\"\r\nContent-Type: application/json\r\n">}
+Completed 200 OK in 830ms (Views: 61.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:20:25 +0600
+Processing by ItemsController#index as */*
+  Rendered items/_list.slim (3.3ms)
+Completed 200 OK in 1027ms (Views: 7.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:22:28 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (3.2ms)
+  Rendered items/index.html.slim within layouts/application (50.6ms)
+Completed 200 OK in 1817ms (Views: 184.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-c0d21fc2fbc6f8476ae5d7e083c0186ee536ecb870f352d6708d49fe77b1984b.css" for ::1 at 2015-09-18 00:22:30 +0600
+
+
+Started GET "/assets/application-58d6551b4776995fb251d55f044bcb2c9fc0fe67288135f31d6083e2424954ce.js" for ::1 at 2015-09-18 00:22:30 +0600
+
+
+Started POST "/items" for ::1 at 2015-09-18 00:22:33 +0600
+Processing by ItemsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WcuasXFdk58yziTeQWMPQP/grunerF/2I1jkgUJIbKFyNjd0gBKaJtfXWHtk0rCdPdNh5Y5w1rI1I3+zI3i57g==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007fb2fc0584d8 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150918-1274-ey9sk5.json>, @original_filename="file.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"file.json\"\r\nContent-Type: application/json\r\n">}
+Completed 200 OK in 814ms (Views: 54.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:22:33 +0600
+Processing by ItemsController#index as */*
+  Rendered items/_list.slim (3.2ms)
+Completed 200 OK in 1038ms (Views: 6.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:22:57 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (3.1ms)
+  Rendered items/index.html.slim within layouts/application (27.5ms)
+Completed 200 OK in 1566ms (Views: 191.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-c0d21fc2fbc6f8476ae5d7e083c0186ee536ecb870f352d6708d49fe77b1984b.css" for ::1 at 2015-09-18 00:22:59 +0600
+
+
+Started GET "/assets/application-58d6551b4776995fb251d55f044bcb2c9fc0fe67288135f31d6083e2424954ce.js" for ::1 at 2015-09-18 00:22:59 +0600
+
+
+Started POST "/items" for ::1 at 2015-09-18 00:23:02 +0600
+Processing by ItemsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9s43dSH5UXc2paqk6kQTuzJizKMKnU4v0mzqHN5ox47dM5qw0LZYztO81gHP9axm8FEDr1pBx2vEF3Euv1gSwQ==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007fb6d89b21e8 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150918-1286-ufwuqs.json>, @original_filename="file.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"file.json\"\r\nContent-Type: application/json\r\n">}
+Completed 200 OK in 812ms (Views: 62.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:23:03 +0600
+Processing by ItemsController#index as */*
+  Rendered items/_list.slim (3.8ms)
+Completed 200 OK in 1038ms (Views: 7.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:23:47 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (3.2ms)
+  Rendered items/index.html.slim within layouts/application (57.0ms)
+Completed 200 OK in 1498ms (Views: 183.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-c0d21fc2fbc6f8476ae5d7e083c0186ee536ecb870f352d6708d49fe77b1984b.css" for ::1 at 2015-09-18 00:23:49 +0600
+
+
+Started GET "/assets/application-58d6551b4776995fb251d55f044bcb2c9fc0fe67288135f31d6083e2424954ce.js" for ::1 at 2015-09-18 00:23:49 +0600
+
+
+Started POST "/items" for ::1 at 2015-09-18 00:23:50 +0600
+Processing by ItemsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"J8ff5LEF6OKnUjyWOuI9kwpIgUHd14kRsW9EgswdzgUMOnIhQErhW0JLQDMfU4JOyHtOTY0LAFWnFN+wrS0bSg==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007fa27313f250 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150918-1412-1cl790v.json>, @original_filename="file.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"file.json\"\r\nContent-Type: application/json\r\n">}
+Completed 200 OK in 814ms (Views: 53.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:23:51 +0600
+Processing by ItemsController#index as */*
+  Rendered items/_list.slim (3.4ms)
+Completed 200 OK in 1040ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/items" for ::1 at 2015-09-18 00:27:28 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"J8ff5LEF6OKnUjyWOuI9kwpIgUHd14kRsW9EgswdzgUMOnIhQErhW0JLQDMfU4JOyHtOTY0LAFWnFN+wrS0bSg==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f8a7d075be8 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150918-1583-15v76kk.json>, @original_filename="file.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"file.json\"\r\nContent-Type: application/json\r\n">}
+Completed 200 OK in 1066ms (Views: 53.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:27:29 +0600
+Processing by ItemsController#index as */*
+  Rendered items/_list.slim (11.7ms)
+Completed 200 OK in 1605ms (Views: 24.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/items" for ::1 at 2015-09-18 00:30:33 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"J8ff5LEF6OKnUjyWOuI9kwpIgUHd14kRsW9EgswdzgUMOnIhQErhW0JLQDMfU4JOyHtOTY0LAFWnFN+wrS0bSg==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007fddf1315ed0 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150918-1732-11b4tu4.json>, @original_filename="file.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"file.json\"\r\nContent-Type: application/json\r\n">}
+Completed 200 OK in 1195ms (Views: 53.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:30:35 +0600
+Processing by ItemsController#index as */*
+  Rendered items/_list.slim (12.8ms)
+Completed 200 OK in 1242ms (Views: 25.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/items" for ::1 at 2015-09-18 00:31:04 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"J8ff5LEF6OKnUjyWOuI9kwpIgUHd14kRsW9EgswdzgUMOnIhQErhW0JLQDMfU4JOyHtOTY0LAFWnFN+wrS0bSg==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007fd259b2b078 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150918-1735-1pu5uap.json>, @original_filename="file.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"file.json\"\r\nContent-Type: application/json\r\n">}
+Completed 200 OK in 876ms (Views: 59.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:31:05 +0600
+Processing by ItemsController#index as */*
+  Rendered items/_list.slim (11.0ms)
+Completed 200 OK in 1225ms (Views: 23.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:31:31 +0600
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (4.5ms)
+  Rendered items/index.html.slim within layouts/application (22.7ms)
+Completed 200 OK in 1677ms (Views: 238.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-c0d21fc2fbc6f8476ae5d7e083c0186ee536ecb870f352d6708d49fe77b1984b.css" for ::1 at 2015-09-18 00:31:32 +0600
+
+
+Started GET "/assets/application-58d6551b4776995fb251d55f044bcb2c9fc0fe67288135f31d6083e2424954ce.js" for ::1 at 2015-09-18 00:31:32 +0600
+
+
+Started POST "/items" for ::1 at 2015-09-18 00:31:39 +0600
+Processing by ItemsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+SQDOs10zKl8A7QDoTcT0F6zAThG/a9dc9FEIMGjQTPS2a7/PDvFEJkayKaEhqwNnIDONBYhJhllqt8SoJOUfA==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007fd25c513020 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150918-1735-166fuyy.json>, @original_filename="file.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"file.json\"\r\nContent-Type: application/json\r\n">}
+Completed 200 OK in 901ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:31:40 +0600
+Processing by ItemsController#index as */*
+  Rendered items/_list.slim (0.1ms)
+Completed 200 OK in 1072ms (Views: 4.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/items" for ::1 at 2015-09-18 00:33:37 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+SQDOs10zKl8A7QDoTcT0F6zAThG/a9dc9FEIMGjQTPS2a7/PDvFEJkayKaEhqwNnIDONBYhJhllqt8SoJOUfA==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007ffaaed908b8 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150918-1768-2c2mqz.json>, @original_filename="file.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"file.json\"\r\nContent-Type: application/json\r\n">}
+Completed 200 OK in 821ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:33:38 +0600
+Processing by ItemsController#index as */*
+  Rendered items/_list.slim (12.0ms)
+Completed 200 OK in 1438ms (Views: 24.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:34:37 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (3.3ms)
+  Rendered items/index.html.slim within layouts/application (51.6ms)
+Completed 200 OK in 1980ms (Views: 176.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-c0d21fc2fbc6f8476ae5d7e083c0186ee536ecb870f352d6708d49fe77b1984b.css" for ::1 at 2015-09-18 00:34:39 +0600
+
+
+Started GET "/assets/application-58d6551b4776995fb251d55f044bcb2c9fc0fe67288135f31d6083e2424954ce.js" for ::1 at 2015-09-18 00:34:39 +0600
+
+
+Started POST "/items" for ::1 at 2015-09-18 00:34:41 +0600
+Processing by ItemsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RBilB+Y/ZJZCz/+iGwRSQFoSSVZrf1UPKZ2u6F6qnvJv5QjCF3BtL6fWgwc+te2dmCGGWjuj3Es/5jXaP5pLvQ==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f9da991b998 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150918-1774-1teaj40.json>, @original_filename="file.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"file.json\"\r\nContent-Type: application/json\r\n">}
+Completed 500 Internal Server Error in 702ms
+
+TypeError (class or module required):
+  lib/json_parser.rb:26:in `is_a?'
+  lib/json_parser.rb:26:in `block in start'
+  lib/json_parser.rb:25:in `select!'
+  lib/json_parser.rb:25:in `start'
+  app/controllers/items_controller.rb:26:in `create'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.6ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.4ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.6ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (17.6ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007f9dab9079c8 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007f9dab9074a0 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007f9dac1d1310 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:34:42 +0600
+Processing by ItemsController#index as */*
+  Rendered items/_list.slim (3.8ms)
+Completed 200 OK in 1039ms (Views: 7.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/items" for ::1 at 2015-09-18 00:35:10 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RBilB+Y/ZJZCz/+iGwRSQFoSSVZrf1UPKZ2u6F6qnvJv5QjCF3BtL6fWgwc+te2dmCGGWjuj3Es/5jXaP5pLvQ==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007fccf39c8610 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150918-1780-1eapoqe.json>, @original_filename="file.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"file.json\"\r\nContent-Type: application/json\r\n">}
+Completed 200 OK in 718ms (Views: 0.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:35:11 +0600
+Processing by ItemsController#index as */*
+  Rendered items/_list.slim (39.2ms)
+Completed 200 OK in 1092ms (Views: 51.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:36:32 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (3.7ms)
+  Rendered items/index.html.slim within layouts/application (49.9ms)
+Completed 200 OK in 1472ms (Views: 169.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-c0d21fc2fbc6f8476ae5d7e083c0186ee536ecb870f352d6708d49fe77b1984b.css" for ::1 at 2015-09-18 00:36:34 +0600
+
+
+Started GET "/assets/application-58d6551b4776995fb251d55f044bcb2c9fc0fe67288135f31d6083e2424954ce.js" for ::1 at 2015-09-18 00:36:34 +0600
+
+
+Started POST "/items" for ::1 at 2015-09-18 00:36:38 +0600
+Processing by ItemsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EYt+rcclP776Ts3LFememfjs/js7UBtSAay7/nW90KY6dtNoNmo2Bx9XsW4wWCFEOt8xN2uMkhYX1yDMFI0F6Q==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f994c575868 @tempfile=#<Tempfile:/var/folders/5g/4763jnpj7bq_cky1qpl_3ps80000gn/T/RackMultipart20150918-1788-1xytyfy.json>, @original_filename="file.json", @content_type="application/json", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"file.json\"\r\nContent-Type: application/json\r\n">}
+Completed 200 OK in 1598ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:36:40 +0600
+Processing by ItemsController#index as */*
+  Rendered items/_list.slim (4.6ms)
+Completed 200 OK in 1550ms (Views: 8.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items" for ::1 at 2015-09-18 00:37:10 +0600
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (0.1ms)
+  Rendered items/index.html.slim within layouts/application (1.7ms)
+Completed 200 OK in 1825ms (Views: 437.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-c0d21fc2fbc6f8476ae5d7e083c0186ee536ecb870f352d6708d49fe77b1984b.css" for ::1 at 2015-09-18 00:37:12 +0600
+
+
+Started GET "/assets/application-096667cba012a7b454e5739ac533aee04872255f47c9303157528ca03a59fc7b.js" for ::1 at 2015-09-18 00:37:12 +0600
+
+
+Started GET "/items?utf8=%E2%9C%93&authenticity_token=jcz2PnvMiyBMAnkvAKNsMmxOfAWE5fkOGlKFPewmeYemMVv7ioOCmakbBYolEtPvrn2zCdQ5cEoMKR4PjRasyA%3D%3D&query=Hitch" for ::1 at 2015-09-18 00:37:29 +0600
+Processing by ItemsController#index as */*
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jcz2PnvMiyBMAnkvAKNsMmxOfAWE5fkOGlKFPewmeYemMVv7ioOCmakbBYolEtPvrn2zCdQ5cEoMKR4PjRasyA==", "query"=>"Hitch"}
+  Rendered items/_list.slim (0.1ms)
+Completed 200 OK in 1546ms (Views: 4.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items?utf8=%E2%9C%93&authenticity_token=jcz2PnvMiyBMAnkvAKNsMmxOfAWE5fkOGlKFPewmeYemMVv7ioOCmakbBYolEtPvrn2zCdQ5cEoMKR4PjRasyA%3D%3D&query=Hitch" for ::1 at 2015-09-18 00:37:30 +0600
+Processing by ItemsController#index as */*
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jcz2PnvMiyBMAnkvAKNsMmxOfAWE5fkOGlKFPewmeYemMVv7ioOCmakbBYolEtPvrn2zCdQ5cEoMKR4PjRasyA==", "query"=>"Hitch"}
+  Rendered items/_list.slim (0.1ms)
+Completed 200 OK in 1647ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items?utf8=%E2%9C%93&authenticity_token=jcz2PnvMiyBMAnkvAKNsMmxOfAWE5fkOGlKFPewmeYemMVv7ioOCmakbBYolEtPvrn2zCdQ5cEoMKR4PjRasyA%3D%3D&query=Suka" for ::1 at 2015-09-18 00:37:34 +0600
+Processing by ItemsController#index as */*
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jcz2PnvMiyBMAnkvAKNsMmxOfAWE5fkOGlKFPewmeYemMVv7ioOCmakbBYolEtPvrn2zCdQ5cEoMKR4PjRasyA==", "query"=>"Suka"}
+  Rendered items/_list.slim (0.0ms)
+Completed 200 OK in 1266ms (Views: 3.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items?utf8=%E2%9C%93&authenticity_token=jcz2PnvMiyBMAnkvAKNsMmxOfAWE5fkOGlKFPewmeYemMVv7ioOCmakbBYolEtPvrn2zCdQ5cEoMKR4PjRasyA%3D%3D&query=Suka" for ::1 at 2015-09-18 00:37:35 +0600
+Processing by ItemsController#index as */*
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jcz2PnvMiyBMAnkvAKNsMmxOfAWE5fkOGlKFPewmeYemMVv7ioOCmakbBYolEtPvrn2zCdQ5cEoMKR4PjRasyA==", "query"=>"Suka"}
+  Rendered items/_list.slim (0.0ms)
+Completed 200 OK in 700ms (Views: 2.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items?utf8=%E2%9C%93&authenticity_token=jcz2PnvMiyBMAnkvAKNsMmxOfAWE5fkOGlKFPewmeYemMVv7ioOCmakbBYolEtPvrn2zCdQ5cEoMKR4PjRasyA%3D%3D&query=" for ::1 at 2015-09-18 00:37:37 +0600
+Processing by ItemsController#index as */*
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jcz2PnvMiyBMAnkvAKNsMmxOfAWE5fkOGlKFPewmeYemMVv7ioOCmakbBYolEtPvrn2zCdQ5cEoMKR4PjRasyA==", "query"=>""}
+  Rendered items/_list.slim (0.1ms)
+Completed 200 OK in 703ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/items?utf8=%E2%9C%93&authenticity_token=jcz2PnvMiyBMAnkvAKNsMmxOfAWE5fkOGlKFPewmeYemMVv7ioOCmakbBYolEtPvrn2zCdQ5cEoMKR4PjRasyA%3D%3D&query=" for ::1 at 2015-09-18 00:37:38 +0600
+Processing by ItemsController#index as */*
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jcz2PnvMiyBMAnkvAKNsMmxOfAWE5fkOGlKFPewmeYemMVv7ioOCmakbBYolEtPvrn2zCdQ5cEoMKR4PjRasyA==", "query"=>""}
+  Rendered items/_list.slim (0.1ms)
+Completed 200 OK in 700ms (Views: 2.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-09-20 11:17:18 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (26.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (3.4ms)
+  Rendered items/index.html.slim within layouts/application (25.4ms)
+Completed 200 OK in 2189ms (Views: 171.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-c0d21fc2fbc6f8476ae5d7e083c0186ee536ecb870f352d6708d49fe77b1984b.css" for ::1 at 2015-09-20 11:17:21 +0600
+
+
+Started GET "/assets/application-096667cba012a7b454e5739ac533aee04872255f47c9303157528ca03a59fc7b.js" for ::1 at 2015-09-20 11:17:21 +0600
+  [1m[36m (41.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateItems (20150916181218)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateItems (20150916181218)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (18.4ms)[0m  [1mCREATE TABLE "items" ("id" serial primary key, "data" hstore, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+PG::UndefinedObject: ERROR:  type "hstore" does not exist
+LINE 1: ...TE TABLE "items" ("id" serial primary key, "data" hstore, "c...
+                                                             ^
+: CREATE TABLE "items" ("id" serial primary key, "data" hstore, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateItems (20150916181218)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (32.6ms)[0m  [1mCREATE TABLE "items" ("id" serial primary key, "data" hstore, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (28.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150916181218"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (11.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.2ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'items'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for ::1 at 2015-09-20 11:37:05 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (3.5ms)
+  Rendered items/index.html.slim within layouts/application (24.4ms)
+Completed 200 OK in 1705ms (Views: 190.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-c0d21fc2fbc6f8476ae5d7e083c0186ee536ecb870f352d6708d49fe77b1984b.css" for ::1 at 2015-09-20 11:37:07 +0600
+
+
+Started GET "/assets/application-096667cba012a7b454e5739ac533aee04872255f47c9303157528ca03a59fc7b.js" for ::1 at 2015-09-20 11:37:07 +0600
+
+
+Started GET "/" for ::1 at 2015-09-20 11:37:55 +0600
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (0.1ms)
+  Rendered items/index.html.slim within layouts/application (1.3ms)
+Completed 500 Internal Server Error in 1440ms
+
+ActionView::Template::Error (couldn't find file 'angularjs' with type 'application/javascript'):
+    3:   head
+    4:     title EsTestIssue
+    5:     = stylesheet_link_tag    'application', media: 'all'
+    6:     = javascript_include_tag 'application'
+    7:     = csrf_meta_tags 
+    8:   body
+    9:     header
+  app/assets/javascripts/application.js:15
+  app/views/layouts/application.html.slim:6:in `_app_views_layouts_application_html_slim___3262705617361748469_70138349429280'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.9ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (27.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (18.1ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (36.9ms)
+
+
+Started GET "/" for ::1 at 2015-09-20 11:39:46 +0600
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (0.1ms)
+  Rendered items/index.html.slim within layouts/application (12.3ms)
+Completed 200 OK in 1613ms (Views: 126.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-c0d21fc2fbc6f8476ae5d7e083c0186ee536ecb870f352d6708d49fe77b1984b.css" for ::1 at 2015-09-20 11:39:48 +0600
+
+
+Started GET "/assets/application-9ecbefd1e0872d86d5085c83d73621ffccb87ca4a83e484ba2022692b2a6416a.js" for ::1 at 2015-09-20 11:39:48 +0600
+
+
+Started GET "/" for ::1 at 2015-09-20 11:40:00 +0600
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (0.1ms)
+  Rendered items/index.html.slim within layouts/application (8.0ms)
+Completed 200 OK in 1415ms (Views: 22.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-c0d21fc2fbc6f8476ae5d7e083c0186ee536ecb870f352d6708d49fe77b1984b.css" for ::1 at 2015-09-20 11:40:02 +0600
+
+
+Started GET "/assets/application-9ecbefd1e0872d86d5085c83d73621ffccb87ca4a83e484ba2022692b2a6416a.js" for ::1 at 2015-09-20 11:40:02 +0600
+
+
+Started GET "/" for ::1 at 2015-09-20 11:40:10 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (3.2ms)
+  Rendered items/index.html.slim within layouts/application (28.3ms)
+Completed 200 OK in 1617ms (Views: 190.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-c0d21fc2fbc6f8476ae5d7e083c0186ee536ecb870f352d6708d49fe77b1984b.css" for ::1 at 2015-09-20 11:40:12 +0600
+
+
+Started GET "/assets/application-9ecbefd1e0872d86d5085c83d73621ffccb87ca4a83e484ba2022692b2a6416a.js" for ::1 at 2015-09-20 11:40:12 +0600
+
+
+Started GET "/" for ::1 at 2015-09-20 11:40:34 +0600
+Processing by ItemsController#index as HTML
+  Rendered items/index.html.slim within layouts/application (7.2ms)
+Completed 500 Internal Server Error in 1440ms
+
+ActionView::Template::Error (can not load translations from /Users/lxkuz/projects/es-test-issue/config/locales/en.yml: #<Errno::ENOENT: No such file or directory @ rb_sysopen - /Users/lxkuz/projects/es-test-issue/config/locales/en.yml>):
+    1: h1= t("win")
+    2: = form_for :item, multipart: true, html: {class: "dropzone"}  do |f|
+    3:   .fallback
+    4:     = f.file_field :data
+  app/views/items/index.html.slim:1:in `_app_views_items_index_html_slim___3974853774950066494_70183559039400'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.4ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (25.0ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (18.0ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (36.5ms)
+
+
+Started GET "/" for ::1 at 2015-09-20 11:41:11 +0600
+Processing by ItemsController#index as HTML
+  Rendered items/index.html.slim within layouts/application (6.5ms)
+Completed 500 Internal Server Error in 1502ms
+
+ActionView::Template::Error (can not load translations from /Users/lxkuz/projects/es-test-issue/config/locales/en.yml: #<Errno::ENOENT: No such file or directory @ rb_sysopen - /Users/lxkuz/projects/es-test-issue/config/locales/en.yml>):
+    1: h1= t("win")
+    2: = form_for :item, multipart: true, html: {class: "dropzone"}  do |f|
+    3:   .fallback
+    4:     = f.file_field :data
+  app/views/items/index.html.slim:1:in `_app_views_items_index_html_slim___3974853774950066494_70183559039400'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.5ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (21.7ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (12.8ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (26.9ms)
+
+
+Started GET "/" for ::1 at 2015-09-20 11:41:32 +0600
+Processing by ItemsController#index as HTML
+  Rendered items/index.html.slim within layouts/application (5.2ms)
+Completed 500 Internal Server Error in 1565ms
+
+ActionView::Template::Error (can not load translations from /Users/lxkuz/projects/es-test-issue/config/locales/en.yml: #<Psych::SyntaxError: (/Users/lxkuz/projects/es-test-issue/config/locales/en.yml): did not find expected key while parsing a block mapping at line 2 column 3>):
+    1: h1= t("win")
+    2: = form_for :item, multipart: true, html: {class: "dropzone"}  do |f|
+    3:   .fallback
+    4:     = f.file_field :data
+  app/views/items/index.html.slim:1:in `_app_views_items_index_html_slim___3974853774950066494_70183559039400'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.6ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (21.6ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (12.6ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (26.3ms)
+
+
+Started GET "/" for ::1 at 2015-09-20 11:41:43 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ItemsController#index as HTML
+  Rendered items/index.html.slim within layouts/application (17.8ms)
+Completed 500 Internal Server Error in 1426ms
+
+ActionView::Template::Error (can not load translations from /Users/lxkuz/projects/es-test-issue/config/locales/en.yml: #<Psych::SyntaxError: (/Users/lxkuz/projects/es-test-issue/config/locales/en.yml): did not find expected key while parsing a block mapping at line 2 column 3>):
+    1: h1= t("win")
+    2: = form_for :item, multipart: true, html: {class: "dropzone"}  do |f|
+    3:   .fallback
+    4:     = f.file_field :data
+  app/views/items/index.html.slim:1:in `_app_views_items_index_html_slim__3002260525611773396_70356250872460'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.9ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (25.9ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (15.6ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (35.2ms)
+
+
+Started GET "/" for ::1 at 2015-09-20 11:41:57 +0600
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (3.1ms)
+  Rendered items/index.html.slim within layouts/application (16.4ms)
+Completed 200 OK in 1664ms (Views: 132.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-c0d21fc2fbc6f8476ae5d7e083c0186ee536ecb870f352d6708d49fe77b1984b.css" for ::1 at 2015-09-20 11:41:58 +0600
+
+
+Started GET "/assets/application-9ecbefd1e0872d86d5085c83d73621ffccb87ca4a83e484ba2022692b2a6416a.js" for ::1 at 2015-09-20 11:41:58 +0600
+
+
+Started GET "/" for ::1 at 2015-09-20 11:42:20 +0600
+Processing by ItemsController#index as HTML
+  Rendered items/index.html.slim within layouts/application (5.3ms)
+Completed 500 Internal Server Error in 1782ms
+
+ActionView::Template::Error (can not load translations from /Users/lxkuz/projects/es-test-issue/config/locales/en.yml: #<Errno::ENOENT: No such file or directory @ rb_sysopen - /Users/lxkuz/projects/es-test-issue/config/locales/en.yml>):
+    1: h1= t("win")
+    2: = form_for :item, multipart: true, html: {class: "dropzone"}  do |f|
+    3:   .fallback
+    4:     = f.file_field :data
+  app/views/items/index.html.slim:1:in `_app_views_items_index_html_slim__3002260525611773396_70356250872460'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.5ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (21.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (12.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (25.9ms)
+
+
+Started GET "/" for ::1 at 2015-09-20 11:42:30 +0600
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (0.1ms)
+  Rendered items/index.html.slim within layouts/application (7.3ms)
+Completed 200 OK in 1612ms (Views: 19.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-c0d21fc2fbc6f8476ae5d7e083c0186ee536ecb870f352d6708d49fe77b1984b.css" for ::1 at 2015-09-20 11:42:31 +0600
+
+
+Started GET "/assets/application-9ecbefd1e0872d86d5085c83d73621ffccb87ca4a83e484ba2022692b2a6416a.js" for ::1 at 2015-09-20 11:42:31 +0600
+
+
+Started GET "/" for ::1 at 2015-09-20 11:43:10 +0600
+Processing by ItemsController#index as HTML
+  Rendered items/_list.slim (1.3ms)
+  Rendered items/index.html.slim within layouts/application (2.7ms)
+Completed 500 Internal Server Error in 1473ms
+
+ActionView::Template::Error (undefined method `any?' for nil:NilClass):
+    1: - if @items.any?
+    2:   - @items.each_with_index do |item, index|
+    3:     .item.hightlight-json
+    4:       pre
+  app/views/items/_list.slim:1:in `_app_views_items__list_slim__2524837555137919968_70356238880200'
+  app/views/items/index.html.slim:11:in `_app_views_items_index_html_slim__3002260525611773396_70356250872460'
+
+
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.0ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (21.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (13.0ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/lxkuz/.rvm/gems/ruby-2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (27.2ms)

@@ -1,0 +1,75 @@
+I"0(function() {
+  var DropzoneInput,
+    bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
+  DropzoneInput = (function() {
+    function DropzoneInput(el) {
+      this.loading = bind(this.loading, this);
+      this.updateTarget = bind(this.updateTarget, this);
+      this.refresh = bind(this.refresh, this);
+      this.el = $(el);
+      Dropzone.autoDiscover = false;
+      this.dropzone = new Dropzone(this.el.get(0), {
+        acceptedFiles: ".json"
+      });
+      this.dropzone.on("addedfile", this.refresh);
+      this.loader = $(".loader");
+    }
+
+    DropzoneInput.prototype.refresh = function() {
+      return setTimeout((function(_this) {
+        return function() {
+          return $.ajax({
+            url: _this.el.attr('action'),
+            success: _this.updateTarget,
+            beforeSend: _this.loading
+          });
+        };
+      })(this), 1000);
+    };
+
+    DropzoneInput.prototype.updateTarget = function(data) {
+      console.log("SUCCESS");
+      return console.log(data);
+    };
+
+    DropzoneInput.prototype.loading = function() {
+      var opts, spinner;
+      this.loader.html("");
+      this.loader.show();
+      $(".list").hide();
+      opts = {
+        lines: 13,
+        length: 12,
+        width: 7,
+        radius: 42,
+        scale: 1,
+        corners: 1,
+        color: '#000',
+        opacity: 0.25,
+        rotate: 0,
+        direction: 1,
+        speed: 1,
+        trail: 60,
+        fps: 20,
+        zIndex: 2e9,
+        className: 'spinner',
+        top: '50%',
+        left: '50%',
+        shadow: false,
+        hwaccel: false,
+        position: 'absolute'
+      };
+      return spinner = new Spinner(opts).spin(this.loader.get(0));
+    };
+
+    return DropzoneInput;
+
+  })();
+
+  window.addComponent(DropzoneInput, {
+    className: 'dropzone'
+  });
+
+}).call(this);
+:ET

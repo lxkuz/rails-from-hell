@@ -1,0 +1,7 @@
+- if @items.any?
+  - @items.each_with_index do |item, index|
+    .item.hightlight-json
+      pre
+        code.json.hljs== JSON.pretty_generate(item)
+- else
+  .no-found Results not found

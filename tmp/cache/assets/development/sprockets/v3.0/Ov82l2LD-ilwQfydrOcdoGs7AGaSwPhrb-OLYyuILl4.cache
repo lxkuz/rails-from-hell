@@ -1,0 +1,75 @@
+I"ë(function() {
+  var Search,
+    bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
+  Search = (function() {
+    function Search(el) {
+      this.loading = bind(this.loading, this);
+      this.updateTarget = bind(this.updateTarget, this);
+      this.search = bind(this.search, this);
+      this.el = $(el);
+      this.input = $("input", this.el);
+      this.form = $("form", this.el);
+      this.loader = $(".loader");
+      this.input.bind("change", this.search);
+      this.form.bind("submit", this.search);
+    }
+
+    Search.prototype.search = function() {
+      $.ajax({
+        url: this.form.attr('action'),
+        data: this.form.serialize(),
+        success: this.updateTarget,
+        beforeSend: this.loading
+      });
+      return false;
+    };
+
+    Search.prototype.updateTarget = function(data) {
+      $(".list").html("");
+      $(".list").append(data);
+      $(".list").show();
+      this.loader.hide();
+      return window.initialize();
+    };
+
+    Search.prototype.loading = function() {
+      var opts, spinner;
+      this.loader.html("");
+      this.loader.show();
+      $(".list").hide();
+      opts = {
+        lines: 13,
+        length: 12,
+        width: 7,
+        radius: 42,
+        scale: 1,
+        corners: 1,
+        color: '#000',
+        opacity: 0.25,
+        rotate: 0,
+        direction: 1,
+        speed: 1,
+        trail: 60,
+        fps: 20,
+        zIndex: 2e9,
+        className: 'spinner',
+        top: '50%',
+        left: '50%',
+        shadow: false,
+        hwaccel: false,
+        position: 'absolute'
+      };
+      return spinner = new Spinner(opts).spin(this.loader.get(0));
+    };
+
+    return Search;
+
+  })();
+
+  window.addComponent(Search, {
+    className: 'search'
+  });
+
+}).call(this);
+:ET

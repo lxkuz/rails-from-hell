@@ -1,0 +1,11 @@
+h1= t("win")
+= form_for :item, multipart: true, html: {class: "dropzone"}  do |f|
+  .fallback
+    = f.file_field :data
+
+.search
+  = form_tag items_path do
+    input type="text" placeholder="Search..." name="query"
+.loader    
+.list
+  = render "list"

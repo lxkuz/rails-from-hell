@@ -1,0 +1,24 @@
+I"¸(function() {
+  var HighlightJSON;
+
+  HighlightJSON = (function() {
+    function HighlightJSON(el) {
+      var code, i, len, ref;
+      this.el = $(el);
+      ref = $("code", this.el);
+      for (i = 0, len = ref.length; i < len; i++) {
+        code = ref[i];
+        hljs.highlightBlock(code);
+      }
+    }
+
+    return HighlightJSON;
+
+  })();
+
+  window.addComponent(HighlightJSON, {
+    className: 'hightlight-json'
+  });
+
+}).call(this);
+:ET

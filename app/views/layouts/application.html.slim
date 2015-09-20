@@ -1,0 +1,15 @@
+doctype 5
+html
+  head
+    title EsTestIssue
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags 
+  body
+    header
+      .-container
+        h1 
+          | ElasticSearch Test Project
+          a.clear.btn href="/items/clear_all" Clear
+    .-container
+      = yield

@@ -1,0 +1,17 @@
+common: &common
+  adapter: postgresql
+  encoding: unicode
+  min_messages: WARNING
+  pool: 5
+
+development:
+  <<: *common
+  database: es_test_development
+
+test:
+  <<: *common
+  database: es_test_test
+
+production:
+  <<: *common
+  database: es_test_development

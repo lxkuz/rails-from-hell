@@ -1,0 +1,52 @@
+I"(function() {
+  var ready;
+
+  window.initialize = function(el) {
+    var func, key, ref, results;
+    if (el == null) {
+      el = document;
+    }
+    ref = window.initializers;
+    results = [];
+    for (key in ref) {
+      func = ref[key];
+      results.push(typeof func === "function" ? func(el) : void 0);
+    }
+    return results;
+  };
+
+  ready = function() {
+    return initialize();
+  };
+
+  $(document).ready(ready);
+
+  $(document).on('page:load', ready);
+
+  window.addComponent = function(klass, options) {
+    var className, disabledCurrentInitializeClassName, disabledInitializeClassName, initializedClassName;
+    if (options == null) {
+      options = {};
+    }
+    if (!options.className) {
+      throw "addComponent options must have className attribute";
+    }
+    className = options.className;
+    initializedClassName = className + "-initialized";
+    disabledInitializeClassName = "disable-initializer";
+    disabledCurrentInitializeClassName = "disable-" + className;
+    window.initializers || (window.initializers = {});
+    return window.initializers[className] = function(el) {
+      var targets;
+      targets = $("." + className + ":not(." + initializedClassName + ", ." + disabledInitializeClassName + ", ." + disabledCurrentInitializeClassName + ")", el);
+      return targets.each(function(i, target) {
+        var item;
+        item = new klass(target);
+        $(target).addClass(initializedClassName);
+        return typeof options.handler === "function" ? options.handler(item) : void 0;
+      });
+    };
+  };
+
+}).call(this);
+:ET
